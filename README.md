@@ -17,12 +17,12 @@ Data Logger is a Frappe-based application that logs site data for audit purposes
 ### Settings Page
 **Data Logger Settings**: Manage logging configurations.
 
-![image-20250204184416300](/Users/ahmad/Development/frappe/bench15/apps/data_logger/README.assets/image-20250204184416300.png)
+![image-20250204184416300](./README.assets/image-20250204184416300.png)
 
 ### Form Layout
 **User Form**: New form **User Login Attempt** added for logging user data.
 
-![image-20250204164616918](/Users/ahmad/Development/frappe/bench15/apps/data_logger/README.assets/image-20250204164616918.png)
+![image-20250204164616918](./README.assets/image-20250204164616918.png)
 
 
 
@@ -30,7 +30,7 @@ Data Logger is a Frappe-based application that logs site data for audit purposes
 
 The application supports email output for logged data.
 
-![image-20250204164528446](/Users/ahmad/Development/frappe/bench15/apps/data_logger/README.assets/image-20250204164528446.png)
+![image-20250204164528446](./README.assets/image-20250204164528446.png)
 
 ## Installation
 1. Install the app in your Frappe site:
