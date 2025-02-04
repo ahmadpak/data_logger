@@ -10,6 +10,7 @@
   "data_logger_frequency",
   "data_log_age",
   "column_break_dvlv",
+  "send_email",
   "email_to"
  ],
  "fields": [
@@ -19,7 +20,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Data Logger Frequency",
-   "options": "Daily Long\nWeekly Long\nMonthly Long",
+   "options": "Hourly Long\nDaily Long\nWeekly Long\nMonthly Long",
    "reqd": 1
   },
   {
@@ -37,10 +38,12 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "send_email",
    "description": "Add emails, each in new line to send the generated data log",
    "fieldname": "email_to",
    "fieldtype": "Small Text",
-   "label": "Email To"
+   "label": "Email To",
+   "mandatory_depends_on": "send_email"
   },
   {
    "default": "0",
@@ -52,12 +55,18 @@
    "depends_on": "enabled",
    "fieldname": "section_break_yruh",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "send_email",
+   "fieldtype": "Check",
+   "label": "Send Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2025-02-04 15:36:14.475050",
+ "modified": "2025-02-04 17:25:15.021260",
  "modified_by": "Administrator",
  "module": "Data Logger",
  "name": "Data Logger Settings",

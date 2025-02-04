@@ -1,3 +1,5 @@
+"""Hooks for data_logger."""
+
 app_name = "data_logger"
 app_title = "Data Logger"
 app_publisher = "Havenir Solutions"
@@ -148,23 +150,12 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"data_logger.tasks.all"
-# 	],
-# 	"daily": [
-# 		"data_logger.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"data_logger.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"data_logger.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"data_logger.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+    "hourly_long": ["data_logger.tasks.hourly_long"],
+    "daily_long": ["data_logger.tasks.daily_long"],
+    "weekly_long": ["data_logger.tasks.weekly_long"],
+    "monthly_long": ["data_logger.tasks.monthly_long"],
+}
 
 # Testing
 # -------
@@ -235,10 +226,9 @@ app_license = "mit"
 # 	"data_logger.auth.validate"
 # ]
 
-# Automatically update python controller files with type annotations for this app.
+# Automatically update python controller files with type annotations for this app.  # noqa
 # export_python_type_annotations = True
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-

@@ -26,6 +26,8 @@ class UserLoginAttempt(Document):
         # Create CSV file
         file_doc = self.create_and_attach_csv()
         self.file_url = file_doc.file_url
+        self.save()
+        self.notify_update()
 
         # Send email notification
         if self.send_email:
@@ -108,47 +110,46 @@ class UserLoginAttempt(Document):
 
     def create_and_attach_csv(self):
         """Create and attach CSV file"""
-        if self.attempts:
-            csv_data = [
-                [
-                    "User",
-                    "First Name",
-                    "Last Name",
-                    "Full Name",
-                    "Successful Attempts",
-                    "Failed Attempts",
-                    "Total Attempts",
-                ]
+        csv_data = [
+            [
+                "User",
+                "First Name",
+                "Last Name",
+                "Full Name",
+                "Successful Attempts",
+                "Failed Attempts",
+                "Total Attempts",
             ]
-            for attempt in self.attempts:
-                csv_data.append(
-                    [
-                        attempt.user,
-                        attempt.first_name,
-                        attempt.last_name,
-                        attempt.full_name,
-                        attempt.successful_attempt,
-                        attempt.failed_attempt,
-                        attempt.total_attempt,
-                    ]
-                )
-            csv_filename = f"Login_Attempts_{self.name}.csv"
-            csv_path = get_site_path("private", "files", csv_filename)
+        ]
+        for attempt in self.attempts:
+            csv_data.append(
+                [
+                    attempt.user,
+                    attempt.first_name,
+                    attempt.last_name,
+                    attempt.full_name,
+                    attempt.successful_attempt,
+                    attempt.failed_attempt,
+                    attempt.total_attempt,
+                ]
+            )
+        csv_filename = f"Login_Attempts_{self.name}.csv"
+        csv_path = get_site_path("private", "files", csv_filename)
 
-            # Creating CSV File
-            with open(csv_path, "w", newline="") as file:
-                writer = csv.writer(file)
-                writer.writerows(csv_data)
+        # Creating CSV File
+        with open(csv_path, "w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerows(csv_data)
 
-            # Attach file to document
-            with open(csv_path, "rb") as f:
-                return save_file(
-                    csv_filename,
-                    f.read(),
-                    self.doctype,
-                    self.name,
-                    is_private=1,
-                )
+        # Attach file to document
+        with open(csv_path, "rb") as f:
+            return save_file(
+                csv_filename,
+                f.read(),
+                self.doctype,
+                self.name,
+                is_private=1,
+            )
 
     def send_email_notification(self, file_url):
         """Send email with the attached CSV file"""
