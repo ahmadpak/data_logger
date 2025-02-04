@@ -1,0 +1,99 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-02 21:57:20.925685",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_mylr",
+  "from_date",
+  "to_date",
+  "file_url",
+  "column_break_ttah",
+  "send_email",
+  "email_to",
+  "section_break_lixs",
+  "attempts"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_mylr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "From Date",
+   "options": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "To Date",
+   "options": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_lixs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "attempts",
+   "fieldtype": "Table",
+   "label": "Attempts",
+   "options": "User Login Attempt Log"
+  },
+  {
+   "fieldname": "column_break_ttah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "send_email",
+   "fieldtype": "Check",
+   "label": "Send Email"
+  },
+  {
+   "depends_on": "send_email",
+   "description": "Add emails, each in new line to send the generated data log",
+   "fieldname": "email_to",
+   "fieldtype": "Small Text",
+   "label": "Email To",
+   "mandatory_depends_on": "send_email"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Attach",
+   "label": "File URL",
+   "read_only": 1
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-04 16:41:16.291880",
+ "modified_by": "Administrator",
+ "module": "Data Logger",
+ "name": "User Login Attempt",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

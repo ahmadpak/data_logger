@@ -1,0 +1,55 @@
+exclude: "node_modules|.git"
+default_stages: [commit]
+fail_fast: false
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        files: "data_logger.*"
+        exclude: ".*json$|.*txt$|.*csv|.*md"
+      - id: check-yaml
+      - id: no-commit-to-branch
+        args: ["--branch", "staging", "--branch", "version-15"]
+      - id: check-merge-conflict
+      - id: check-ast
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        additional_dependencies: ["flake8-bugbear"]
+        # W503  Line break occurred before a binary operator
+        # W504  Line break occurred after a binary operator
+        args: ["--ignore=W503,W504"]
+        exclude: ".*setup.py$"
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort (python)
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.2.1
+    hooks:
+      # Run the linter.
+      - id: ruff
+      # Run the formatter.
+      - id: ruff-format
+
+  # docstring validation
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.7.0
+    hooks:
+      - id: interrogate
+        args: [--fail-under=80, -vv, --ignore-init-module]
+        exclude: __init__.py
+        style: google
+
+ci:
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false

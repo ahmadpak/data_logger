@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-02-02 22:04:38.098837",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "section_break_yruh",
+  "data_logger_frequency",
+  "data_log_age",
+  "column_break_dvlv",
+  "email_to"
+ ],
+ "fields": [
+  {
+   "default": "Daily Long",
+   "fieldname": "data_logger_frequency",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Data Logger Frequency",
+   "options": "Daily Long\nWeekly Long\nMonthly Long",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "description": "Delete old logs after these many days. 0 means it is disabled",
+   "fieldname": "data_log_age",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Data Log Age",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_dvlv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Add emails, each in new line to send the generated data log",
+   "fieldname": "email_to",
+   "fieldtype": "Small Text",
+   "label": "Email To"
+  },
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "depends_on": "enabled",
+   "fieldname": "section_break_yruh",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-02-04 15:36:14.475050",
+ "modified_by": "Administrator",
+ "module": "Data Logger",
+ "name": "Data Logger Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
